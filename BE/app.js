@@ -2,10 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
-
 const Schema = mongoose.Schema;
-
-
 const costSchema = new Schema({
   text: String,
   summ: Number,
@@ -38,7 +35,6 @@ app.post('/create', (req, res) => {
   }
 });
 
-
 app.delete('/delete', (req, res) => {
   if (req.query._id) {
     Cost.deleteOne({ _id: req.query._id }).then((result) => {
@@ -48,7 +44,7 @@ app.delete('/delete', (req, res) => {
     });
   } else {
     res.status(404).send('id not found');
-  }  
+  }
 });
 
 app.patch('/update', (req, res) => {
